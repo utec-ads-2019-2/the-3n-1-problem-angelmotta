@@ -19,29 +19,31 @@ long long int algo(long long int n){
 }
 
 int main() {
-	int i, j, temp, max = 0, result = 0, reverse=0;
-	std::cin >> i >> j;		// i=20 j=10
-	//std::cout << algo(n) << std::endl;
-	if(i > j){
-		temp = i;
-		i = j;	// i = 10;
-		j = temp;	// j = 20;
-		reverse = 1;
-
-	}
-	for(int n = i; n <= j; n++){
-		cycle_length = 1;
+	int i, j, temp;
+	while(std::cin >> i >> j){
+		int max = 0, result = 0, reverse=0;
 		//std::cout << algo(n) << std::endl;
-		result = algo(n);
-		if(result > max){
-			max = result;
+		if(i > j){
+			temp = i;
+			i = j;	// i = 10;
+			j = temp;	// j = 20;
+			reverse = 1;
+
 		}
+		for(int n = i; n <= j; n++){
+			cycle_length = 1;
+			//std::cout << algo(n) << std::endl;
+			result = algo(n);
+			if(result > max){
+				max = result;
+			}
+		}
+		if(reverse){
+			temp = j;
+			j = i;
+			i = temp;
+		}
+		std::cout << i << " " << j << " " << max << std::endl;
 	}
-	if(reverse){
-		temp = j;
-		j = i;
-		i = temp;
-	}
-	std::cout << i << " " << j << " " << max << std::endl;
     return 0;
 }
